@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Widget</title>
+	
+	<!-- ================= Favicon ================== -->
+    <!-- Standard -->
+    <link rel="shortcut icon" href="http://placehold.it/64.png/000/fff">
+    <!-- Retina iPad Touch Icon-->
+    <link rel="apple-touch-icon" sizes="144x144" href="http://placehold.it/144.png/000/fff">
+    <!-- Retina iPhone Touch Icon-->
+    <link rel="apple-touch-icon" sizes="114x114" href="http://placehold.it/114.png/000/fff">
+    <!-- Standard iPad Touch Icon--> 
+    <link rel="apple-touch-icon" sizes="72x72" href="http://placehold.it/72.png/000/fff">
+    <!-- Standard iPhone Touch Icon--> 
+    <link rel="apple-touch-icon" sizes="57x57" href="http://placehold.it/57.png/000/fff">
+	
+	<!-- Styles -->
+    <link th:href="@{css/lib/font-awesome.min.css}" rel="stylesheet">
+    <link th:href="@{css/lib/themify-icons.css}" rel="stylesheet">
+    <link th:href="@{css/lib/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{css/lib/simdahs.css}" rel="stylesheet">
+    <link th:href="@{css/style.css}" rel="stylesheet">
+
+	<!-- js -->
+<!--	<script type="text/javascript" th:src="@{js/example.js}"></script>-->
+</head>
+
+<body class="bg-primary">
+
+	<div class="unix-login">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6 col-lg-offset-3">
+					<div class="login-content">
+						<div class="login-logo">
+							<a th:href="@{index}"><span>小康——电子病历管理系统</span></a>
+						</div>
+						<div class="login-form">
+							<h4>登录</h4>
+							<form th:action="@{/login}">
+								<div class="form-group">
+									<label>电子邮箱</label>
+									<input type="email" name="user-email" class="form-control">
+								</div>
+								<div class="form-group">
+									<label>密码</label>
+									<input type="password" name="password" class="form-control">
+								</div>
+								<div class="checkbox">
+									<label>
+										<input type="checkbox"> 记住我
+									</label>
+									<label class="pull-right">
+										<a th:href="@{page-reset-password}">忘记密码？</a>
+									</label>
+									<p style="color: red" th:text="${msg}" th:if="${not #strings.isEmpty(msg)}"></p>
+								</div>
+								<button type="submit" class="btn btn-primary btn-flat m-b-30 m-t-30">登陆</button>
+								<div class="social-login-content">
+									<div class="social-button">
+										<button type="button" class="btn btn-primary bg-facebook btn-flat btn-addon m-b-10"><i class="ti-facebook"></i>使用facebook登陆</button>
+										<button type="button" class="btn btn-primary bg-twitter btn-flat btn-addon m-t-10"><i class="ti-twitter"></i>使用twitter登陆</button>
+									</div>
+								</div>
+								<div class="register-link m-t-15 text-center">
+									<p>还没有账号? <a th:href="@{page-register}">在这里注册</a></p>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+
+</html>

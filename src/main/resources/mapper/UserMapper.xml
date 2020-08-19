@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sufer.mapper.UserMapper">
+    
+    <resultMap id="UserMapping" type="User">
+        <id column="user_id" property="userId"></id>
+        <result column="user_name" property="userName"></result>
+        <result column="user_pwd" property="userPwd"></result>
+        <result column="user_email" property="userEmail"></result>
+        <result column="user_type" property="userType"></result>
+    </resultMap>
+
+    <parameterMap id="UserParaMapping" type="User">
+        <parameter property="userName" resultMap="user_name"></parameter>
+        <parameter property="userPwd" resultMap="user_pwd"></parameter>
+        <parameter property="userEmail" resultMap="user_email"></parameter>
+    </parameterMap>
+
+    <select id="selectPasswordByName" resultType="User" resultMap="UserMapping">
+        select * from user where user_name = #{userName} and user_pwd = #{password}
+    </select>
+
+    <select id="selectUserById" resultType="User" resultMap="UserMapping">
+        select * from user where user_id = #{userId}
+    </select>
+    <select id="selectPasswordByEmail" resultType="User" resultMap="UserMapping">
+        select *
+        from user
+        <where>
+            user_email = #{userEmail} and user_pwd = #{password}
+        </where>
+    </select>
+
+    <update id="updatePassword">
+        update user
+        set user_pwd = #{newPassword}
+        where user_email = #{userEmail}
+    </update>
+
+    <insert id="addUser" keyProperty="userId" useGeneratedKeys="true" parameterType="User" parameterMap="UserParaMapping">
+        insert into user(user_name, user_email, user_pwd)
+        values (#{userName} , #{userEmail}, #{userPwd})
+    </insert>
+</mapper>

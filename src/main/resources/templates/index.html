@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Home</title>
+	
+	<!-- ================= Favicon ================== -->
+    <!-- Standard -->
+    <link rel="shortcut icon" href="http://placehold.it/64.png/000/fff">
+    <!-- Retina iPad Touch Icon-->
+    <link rel="apple-touch-icon" sizes="144x144" href="http://placehold.it/144.png/000/fff">
+    <!-- Retina iPhone Touch Icon-->
+    <link rel="apple-touch-icon" sizes="114x114" href="http://placehold.it/114.png/000/fff">
+    <!-- Standard iPad Touch Icon--> 
+    <link rel="apple-touch-icon" sizes="72x72" href="http://placehold.it/72.png/000/fff">
+    <!-- Standard iPhone Touch Icon--> 
+    <link rel="apple-touch-icon" sizes="57x57" href="http://placehold.it/57.png/000/fff">
+	
+	<!-- Styles -->
+    <link th:href="@{css/lib/font-awesome.min.css}" rel="stylesheet">
+    <link th:href="@{css/lib/themify-icons.css}" rel="stylesheet">
+    <link th:href="@{css/lib/owl.carousel.min.css}" rel="stylesheet" />
+    <link th:href="@{css/lib/owl.theme.default.min.css}" rel="stylesheet" />
+    <link th:href="@{css/lib/weather-icons.css}" rel="stylesheet" />
+    <link th:href="@{css/lib/mmc-chat.css}" rel="stylesheet" />
+    <link th:href="@{css/lib/sidebar.css}" rel="stylesheet">
+    <link th:href="@{css/lib/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{css/lib/simdahs.css}" rel="stylesheet">
+    <link th:href="@{css/style.css}" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <div class="sidebar sidebar-hide-to-small sidebar-shrink sidebar-gestures">
+        <div class="nano">
+            <div class="nano-content">
+                <ul>
+					<li class="label">Main</li>
+                    <li class="active"><a th:href="@{/index}"><i class="ti-home"></i> 主页 </a></li>
+                    <li><a th:href="@{/app-profile}"><i class="ti-user"></i> 个人信息</a></li>
+					<li class="label">工作</li>
+					<li><a class="sidebar-sub-toggle"><i class="ti-heart"></i> 医疗服务 <span class="sidebar-collapse-icon ti-angle-down"></span></a>
+                        <ul>
+                            <li><a th:href="@{/new_patient}">新建病人</a></li>
+                            <li><a th:href="@{/new_record}">新开病例</a></li>
+                            <li><a th:href="@{/new_prescription}">新开处方</a></li>
+                        </ul>
+                    </li>
+					<li><a class="sidebar-sub-toggle"><i class="ti-wheelchair"></i> 病人信息查询 <span class="sidebar-collapse-icon ti-angle-down"></span></a>
+                        <ul>
+                            <li><a th:href="@{/search_personalInfo}">个人信息</a></li>
+                            <li><a th:href="@{/search_prescription}">处方记录</a></li>
+                            <li><a th:href="@{/search_record}">病例记录</a></li>
+                        </ul>
+                    </li>			
+                    <li><a class="sidebar-sub-toggle"><i class="ti-pencil-alt"></i> 医院信息查询 <span class="sidebar-collapse-icon ti-angle-down"></span></a>
+                        <ul>
+                            <li><a th:href="@{/search_medicine}">药品情况</a></li>
+                        </ul>
+                    </li>			
+					<li class="label">账户</li>
+					<li><a class="sidebar-sub-toggle"><i class="ti-target"></i> 账户管理 <span class="sidebar-collapse-icon ti-angle-down"></span></a>
+                        <ul>
+                            <li><a th:href="@{/page-login}">重新登录</a></li>
+                            <li><a th:href="@{/page-register}">注册</a></li>
+                            <li><a th:href="@{/page-reset-password}">更改密码</a></li>
+                        </ul>
+                    </li>
+					
+
+                </ul>
+            </div>
+        </div>
+    </div><!-- /# sidebar -->
+
+
+
+
+    <div class="header">
+        <div class="pull-left">
+            <div class="logo" id="sideLogo">
+                <a href="index.html">
+                    <img class="full-logo" th:src="@{images/logo_big.png}" alt="SimDahs">
+                    <img class="small-logo" th:src="@{images/logo-small.png}" alt="SimDahs">
+                </a>
+            </div>
+            <div class="hamburger sidebar-toggle">
+                <span class="ti-menu"></span>
+            </div>
+        </div>
+
+        <div class="pull-right p-r-15">
+            <ul>
+                <li class="header-icon dib"><i class="ti-bell"></i>
+                    <div class="drop-down">
+                        <div class="dropdown-content-heading">
+                            <span class="text-left">Recent Notifications</span>
+                        </div>
+                        <div class="dropdown-content-body">
+                            <ul>
+                                <li>
+                                    <a href="#">
+                                        <img class="pull-left m-r-10 avatar-img" th:src="@{images/avatar/3.jpg}" alt="" />
+                                        <div class="notification-content">
+                                            <small class="notification-timestamp pull-right">02:34 PM</small>
+                                            <div class="notification-heading">王院长</div>
+                                            <div class="notification-text">5 members joined today </div>
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="#">
+                                        <img class="pull-left m-r-10 avatar-img" th:src="@{images/avatar/3.jpg}" alt="" />
+                                        <div class="notification-content">
+                                            <small class="notification-timestamp pull-right">02:34 PM</small>
+                                            <div class="notification-heading">Sofiya</div>
+                                            <div class="notification-text">likes a photo of you</div>
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="#">
+                                        <img class="pull-left m-r-10 avatar-img" th:src="@{images/avatar/3.jpg}" alt="" />
+                                        <div class="notification-content">
+                                            <small class="notification-timestamp pull-right">02:34 PM</small>
+                                            <div class="notification-heading">Richard</div>
+                                            <div class="notification-text">Hi Teddy, Just wanted to let you ...</div>
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="#">
+                                        <img class="pull-left m-r-10 avatar-img" th:src="@{images/avatar/3.jpg}" alt="" />
+                                        <div class="notification-content">
+                                            <small class="notification-timestamp pull-right">02:34 PM</small>
+                                            <div class="notification-heading">Sara Maggi</div>
+                                            <div class="notification-text">Hi Teddy, Just wanted to let you ...</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="text-center">
+                                    <a href="#" class="more-link">See All</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+                <li class="header-icon dib"><i class="ti-email"></i>
+                    <div class="drop-down">
+                        <div class="dropdown-content-heading">
+                            <span class="text-left">2 New Messages</span>
+                            <a th:href="@{/email}"><i class="ti-pencil-alt pull-right"></i></a>
+                        </div>
+                        <div class="dropdown-content-body">
+                            <ul>
+                                <li class="notification-unread">
+                                    <a href="#">
+                                        <img class="pull-left m-r-10 avatar-img" th:src="@{images/avatar/1.jpg}" alt="" />
+                                        <div class="notification-content">
+                                            <small class="notification-timestamp pull-right">02:34 PM</small>
+                                            <div class="notification-heading">John Doe</div>
+                                            <div class="notification-text">Hi Teddy, Just wanted to let you ...</div>
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <li class="notification-unread">
+                                    <a href="#">
+                                        <img class="pull-left m-r-10 avatar-img" th:src="@{images/avatar/2.jpg}" alt="" />
+                                        <div class="notification-content">
+                                            <small class="notification-timestamp pull-right">02:34 PM</small>
+                                            <div class="notification-heading">Sara Maggi</div>
+                                            <div class="notification-text">Hi Teddy, Just wanted to let you ...</div>
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="#">
+                                        <img class="pull-left m-r-10 avatar-img" th:src="@{images/avatar/3.jpg}" alt="" />
+                                        <div class="notification-content">
+                                            <small class="notification-timestamp pull-right">02:34 PM</small>
+                                            <div class="notification-heading">John Doe</div>
+                                            <div class="notification-text">Hi Teddy, Just wanted to let you ...</div>
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="#">
+                                        <img class="pull-left m-r-10 avatar-img" th:src="@{images/avatar/2.jpg}" alt="" />
+                                        <div class="notification-content">
+                                            <small class="notification-timestamp pull-right">02:34 PM</small>
+                                            <div class="notification-heading">Sara Maggi</div>
+                                            <div class="notification-text">Hi Teddy, Just wanted to let you ...</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="text-center">
+                                    <a href="#" class="more-link">See All</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+                <li class="header-icon dib"><img class="avatar-img" th:src="@{images/avatar/1.jpg}" alt="" /> <span class="user-avatar">[[${session.username}]] <i class="ti-angle-down f-s-10"></i></span>
+                    <div class="drop-down dropdown-profile">
+                        <div class="dropdown-content-body">
+                            <ul>
+                                <li><a href="#"><i class="ti-user"></i> <span>个人信息</span></a></li>
+                                <li><a href="#"><i class="ti-write"></i> <span>代办事项</span></a></li>
+                                <li><a href="#"><i class="ti-bell"></i> <span>我的</span></a></li>
+                                <li><a href="#"><i class="ti-email"></i> <span>我的信息</span></a></li>
+                                <li><a href="#"><i class="ti-settings"></i> <span>系统设置</span></a></li>
+                                <li><a href="#"><i class="ti-help-alt"></i> <span>帮助</span></a></li>
+                                <li><a href="#"><i class="ti-power-off"></i> <span>退出登录</span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+
+
+
+    <div class="content-wrap">
+        <div class="main">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-8 p-0">
+                        <div class="page-header">
+                            <div class="page-title">
+                                <h1>主页</h1>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 p-0">
+                        <div class="page-header">
+                            <div class="page-title">
+                                <ol class="breadcrumb text-right">
+                                    <li class="active">我的主页</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="main-content">
+                    <div class="row">
+						<div class="col-lg-6">
+							<div class="row">
+								<div class="col-lg-3">
+									<div class="card">
+										<div class="stat-widget-one">
+                                            <a href="#patient">
+                                                <div class="profile-widget">
+                                                    <div class="stat-text">主治病人</div>
+                                                    <div class="stat-digit">19</div>
+                                                </div>
+                                            </a>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-3">
+									<div class="card">
+										<div class="stat-widget-one">
+                                            <a href="app-profile.html">
+                                                <div class="profile-widget">
+                                                    <div class="stat-text">课题研究</div>
+                                                    <div class="stat-digit">6</div>
+                                                </div>
+                                            </a>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-3">
+									<div class="card">
+										<div class="stat-widget-one">
+                                            <a href="#patient">
+                                                <div class="profile-widget">
+                                                    <div class="stat-text">今日手术数量</div>
+                                                    <div class="stat-digit">0</div>
+                                                </div>
+                                            </a>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-3">
+									<div class="card">
+										<div class="stat-widget-one">
+                                            <a href="#outpatient">
+                                                <div class="profile-widget">
+                                                    <div class="stat-text">今日已门诊数量</div>
+                                                    <div class="stat-digit">29</div>
+                                                </div>
+                                            </a>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-lg-12">
+									<div class="card alert">
+										<div class="card-header">
+											<h4>代办事项 </h4>
+											<div class="card-header-right-icon">
+												<ul>
+													<li class="card-close" data-dismiss="alert"><i class="ti-close"></i></li>
+													<li class="doc-link"><a href="#"><i class="ti-search"> 更多</i></a></li>
+												</ul>
+											</div>
+										</div>
+										<div class="todo-list">
+											<div class="tdl-holder">
+												<div class="tdl-content">
+													<ul>
+														<li><label><input type="checkbox"><i></i><span>29床加药</span><a href='#' class="ti-close"></a></label></li>
+														<li><label><input type="checkbox"><i></i><span>提交效绩表</span><a href='#' class="ti-close"></a></label></li>
+														<li><label><input type="checkbox" checked><i></i><span>预约手术室</span><a href='#' class="ti-close"></a></label></li>
+													</ul>
+												</div>
+												<input type="text" class="tdl-new form-control" placeholder="新增代办事项">
+											</div>
+										</div>
+									</div><!-- /# card -->
+								</div>
+							</div>
+						</div><!-- /# column -->
+                        <div>
+                            <div class="col-lg-6">
+                                <div class="card bg-success">
+                                    <div class="testimonial-widget-one p-17">
+                                        <div class="owl-carousel owl-theme">
+                                            <div class="item">
+                                                <div class="testimonial-content">
+                                                    <div class="testimonial-text">
+                                                    <i class="fa fa-quote-left"></i> 健康所系，性命相托。当我步入神圣医学学府的时刻，谨庄严宣誓：我志愿献身医学，热爱祖国，忠于人民，恪守医德，尊师守纪，刻苦钻研，孜孜不倦，精益求精，全面发展。我决心竭尽全力除人类之病痛，助健康之完美，维护医术的圣洁和荣誉，救死扶伤，不辞艰辛，执着追求，为祖国医药卫生事业的发展和人类身心健康奋斗终生。                                                    <i class="fa fa-quote-right"></i>
+                                                    </div>
+                                                    <img class="testimonial-author-img" th:src="@{images/avatar/1.jpg}" alt="" />
+                                                    <div class="testimonial-author">————《医学生誓言》</div>
+                                                </div>
+                                            </div>
+                                            <div class="item">
+                                                <div class="testimonial-content">
+                                                    <div class="testimonial-text">
+                                                    <i class="fa fa-quote-left"></i> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation <i class="fa fa-quote-right"></i>
+                                                    </div>
+                                                    <img class="testimonial-author-img" th:src="@{images/avatar/1.jpg}" alt="" />
+                                                    <div class="testimonial-author">TYRION LANNISTER</div>
+                                                    <div class="testimonial-author-position">Founder-Ceo. Dell Corp</div>
+                                                </div>
+                                            </div>
+                                            <div class="item">
+                                                <div class="testimonial-content">
+                                                    <div class="testimonial-text">
+                                                    <i class="fa fa-quote-left"></i> 医生是我们文明世界的精华。<i class="fa fa-quote-right"></i>
+                                                    </div>
+                                                    <img class="testimonial-author-img" th:src="@{images/avatar/1.jpg}" alt="" />
+                                                    <div class="testimonial-author">————罗·路·史蒂文森 </div>
+                                                </div>
+                                            </div>
+                                            <div class="item">
+                                                <div class="testimonial-content">
+                                                    <div class="testimonial-text">
+                                                    <i class="fa fa-quote-left"></i> 
+                                                    一个医生,不是为自己的名誉工作,他的价值, 远比那五花八门的名誉更神圣更金贵棗驱除瘟疫,用欢乐代替痛苦。
+                                                    <i class="fa fa-quote-right"></i>
+                                                    </div>
+                                                    <img class="testimonial-author-img" th:src="@{images/avatar/1.jpg}" alt="" />
+                                                    <div class="testimonial-author">————张海迪</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="thumbnail">
+                                    <a th:href="@{images/lights.jpg}">
+                                        <img th:src="@{images/lights.jpg}" alt="Lights" style="width:100%">
+                                        <div class="caption">
+                                            <p>Lorem ipsum donec id elit non mi porta gravida at eget metus.</p>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- /# row -->
+                    <a name="patient"></a>
+					<div>
+                        <div class="col-lg-6">
+                            <div class="card alert">
+                                <div class="card-header">
+                                    <h4>主治病人</h4>
+                                    <div class="card-header-right-icon">
+                                        <ul>
+                                            <li class="card-close" data-dismiss="alert"><i class="ti-close"></i></li>
+                                            <li class="doc-link"><a href="#"><i class="ti-search"> 更多</i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="recent-comment">
+									<div class="media">
+										<div class="media-left">
+											<a href="#"><img class="media-object" th:src="@{images/avatar/1.jpg}" alt="..."></a>
+										</div>
+										<div class="media-body">
+											<h4 class="media-heading">王弼</h4>
+											<p>急性阑尾炎，男性，56岁，29床</p>
+                                        </div>
+											<p class="comment-date">2020.4.14</p>
+                                    </div>
+									<div class="media">
+										<div class="media-left">
+											<a href="#"><img class="media-object" th:src="@{images/avatar/2.jpg}" alt="..."></a>
+										</div>
+										<div class="media-body">
+											<h4 class="media-heading">陆航</h4>
+											<p>系统性肠胃炎，女性，12岁，2床</p>
+                                        </div>
+											<p class="comment-date">2020.4.15</p>
+									</div>
+                                    <div class="media">
+										<div class="media-left">
+											<a href="#"><img class="media-object" th:src="@{images/avatar/3.jpg}" alt="..."></a>
+										</div>
+										<div class="media-body">
+											<h4 class="media-heading">刘畅</h4>
+											<p>胃胀气，男性，21岁，5床</p>
+                                        </div>
+											<p class="comment-date">2020.4.14</p>
+									</div>
+                                    <div class="media">
+										<div class="media-left">
+											<a href="#"><img class="media-object" th:src="@{images/avatar/1.jpg}" alt="..."></a>
+										</div>
+										<div class="media-body">
+											<h4 class="media-heading">张倩</h4>
+											<p>系统性肠胃炎，女性，33岁，6床</p>
+                                        </div>
+											<p class="comment-date">2020.4.16</p>
+									</div>
+                                    <div class="media">
+										<div class="media-left">
+											<a href="#"><img class="media-object" th:src="@{images/avatar/2.jpg}" alt="..."></a>
+										</div>
+										<div class="media-body">
+											<h4 class="media-heading">骆飞</h4>
+											<p>肠炎，女性，40岁，3床</p>
+                                        </div>
+											<p class="comment-date">2020.4.16</p>
+									</div>
+								</div>
+							</div><!-- /# card -->
+						</div><!-- /# column -->
+					</div>
+                    <div>
+                        <div class="col-lg-6">
+                            <div class="card alert">
+                                <div class="card-header">
+                                    <h4>今日手术</h4>
+                                    <div class="card-header-right-icon">
+                                        <ul>
+                                            <li class="card-close" data-dismiss="alert"><i class="ti-close"></i></li>
+                                            <li class="doc-link"><a href="#"><i class="ti-search"> 更多</i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="recent-comment">
+									<div class="media">
+										<div class="media-left">
+											<a href="#"><img class="media-object" th:src="@{images/avatar/1.jpg}" alt="..."></a>
+										</div>
+										<div class="media-body">
+											<h4 class="media-heading">李强</h4>
+											<div>阑尾手术，男性，56岁，29床</div>
+                                            <div>
+                                                <span>地点</span>:手术室3
+                                            </div>
+											<div>
+                                                <span>手术时间：</span>:2020.4.16 10:30
+                                            </div>
+										</div>
+									</div>
+                                    <div class="media">
+										<div class="media-left">
+											<a href="#"><img class="media-object" th:src="@{images/avatar/2.jpg}" alt="..."></a>
+										</div>
+										<div class="media-body">
+											<h4 class="media-heading">赵慧</h4>
+											<div>癌细胞切除手术，女性，46岁，21床</div>
+                                            <div>
+                                                <span>地点</span>:手术室4
+                                            </div>
+											<div>
+                                                <span>手术时间：</span>:2020.4.16 14:30
+                                            </div>
+										</div>
+									</div>
+                                    <div class="media">
+										<div class="media-left">
+											<a href="#"><img class="media-object" th:src="@{images/avatar/3.jpg}" alt="..."></a>
+										</div>
+										<div class="media-body">
+											<h4 class="media-heading">王璐</h4>
+											<div>阑尾炎，女性，22岁，1床</div>
+                                            <div>
+                                                <span>地点</span>:手术室3
+                                            </div>
+											<div>
+                                                <span>手术时间：</span>:2020.4.16 18:30
+                                            </div>
+										</div>
+									</div>
+								</div>
+							</div><!-- /# card -->
+						</div><!-- /# column -->
+                        <div class="col-lg-6">
+                            <div class="card alert">
+                                <div class="card-header">
+                                    <h4><a name="outpatient">今日门诊</a></h4>
+                                    <div class="card-header-right-icon">
+                                        <ul>
+                                            <li class="card-close" data-dismiss="alert"><i class="ti-close"></i></li>
+                                            <li class="doc-link"><a href="#"><i class="ti-search"> 更多</i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="recent-comment">
+									<div class="media">
+										<div class="media-left">
+											<a href="#"><img class="media-object" th:src="@{images/avatar/1.jpg}" alt="..."></a>
+										</div>
+										<div class="media-body">
+											<h4 class="media-heading">李强</h4>
+											<div>胃胀气</div>
+                                            <div>
+                                                <span>是否入院</span>:否
+                                                <span class="comment-date"><a href=#>处方记录</a></span>
+                                            </div>
+										</div>
+									</div>
+                                    <div class="media">
+										<div class="media-left">
+											<a href="#"><img class="media-object" th:src="@{images/avatar/1.jpg}" alt="..."></a>
+										</div>
+										<div class="media-body">
+											<h4 class="media-heading">王东</h4>
+											<div>肠炎</div>
+                                            <div>
+                                                <span>是否入院</span>:否
+                                                <span class="comment-date"><a href=#>处方记录</a></span>
+                                            </div>
+										</div>
+									</div>
+                                    <div class="media">
+										<div class="media-left">
+											<a href="#"><img class="media-object" th:src="@{images/avatar/1.jpg}" alt="..."></a>
+										</div>
+										<div class="media-body">
+											<h4 class="media-heading">赵四</h4>
+											<div>胃炎</div>
+                                            <div>
+                                                <span>是否入院</span>:否
+                                                <span class="comment-date"><a href=#>处方记录</a></span>
+                                            </div>
+										</div>
+									</div>
+								</div>
+							</div><!-- /# card -->
+						</div><!-- /# column -->
+					</div>
+                </div><!-- /# main content -->
+                Copyright &copy; 2019.Company name All rights reserved.
+            </div>
+        </div><!-- /# main -->
+    </div><!-- /# content wrap -->
+	
+	
+	
+    <script th:src="@{js/lib/jquery.min.js}"></script><!-- jquery vendor -->
+    <script th:src="@{js/lib/jquery.nanoscroller.min.js}"></script><!-- nano scroller -->
+    <script th:src="@{js/lib/sidebar.js}"></script><!-- sidebar -->
+    <script th:src="@{js/lib/bootstrap.min.js}"></script><!-- bootstrap -->
+    <script th:src="@{js/lib/mmc-common.js}"></script>
+    <script th:src="@{js/lib/mmc-chat.js}"></script>
+	<!--  Chart js -->
+	<script th:src="@{js/lib/chart-js/Chart.bundle.js}"></script>
+	<script th:src="@{js/lib/chart-js/chartjs-init.js}"></script>
+	<!-- // Chart js -->
+
+
+    <script th:src="@{js/lib/sparklinechart/jquery.sparkline.min.js}"></script><!-- scripit init-->
+    <script th:src="@{js/lib/sparklinechart/sparkline.init.js}"></script><!-- scripit init-->
+	
+	<!--  Datamap -->
+    <script th:src="@{js/lib/datamap/d3.min.js}"></script>
+    <script th:src="@{js/lib/datamap/topojson.js}"></script>
+    <script th:src="@{js/lib/datamap/datamaps.world.min.js}"></script>
+    <script th:src="@{js/lib/datamap/datamap-init.js}"></script>
+	<!-- // Datamap -->-->
+    <script th:src="@{js/lib/weather/jquery.simpleWeather.min.js}"></script>
+    <script th:src="@{js/lib/weather/weather-init.js}"></script>
+    <script th:src="@{js/lib/owl-carousel/owl.carousel.min.js}"></script>
+    <script th:src="@{js/lib/owl-carousel/owl.carousel-init.js}"></script>
+    <script th:src="@{js/scripts.js}"></script><!-- scripit init-->
+</body>
+</html>

@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>个人信息</title>
+	
+	<!-- ================= Favicon ================== -->
+    <!-- Standard -->
+    <link rel="shortcut icon" href="http://placehold.it/64.png/000/fff">
+    <!-- Retina iPad Touch Icon-->
+    <link rel="apple-touch-icon" sizes="144x144" href="http://placehold.it/144.png/000/fff">
+    <!-- Retina iPhone Touch Icon-->
+    <link rel="apple-touch-icon" sizes="114x114" href="http://placehold.it/114.png/000/fff">
+    <!-- Standard iPad Touch Icon--> 
+    <link rel="apple-touch-icon" sizes="72x72" href="http://placehold.it/72.png/000/fff">
+    <!-- Standard iPhone Touch Icon--> 
+    <link rel="apple-touch-icon" sizes="57x57" href="http://placehold.it/57.png/000/fff">
+	
+	<!-- Styles -->
+    <link th:href="@{css/lib/font-awesome.min.css}" rel="stylesheet">
+    <link th:href="@{css/lib/themify-icons.css}" rel="stylesheet">
+    <link th:href="@{css/lib/mmc-chat.css}" rel="stylesheet" />
+    <link th:href="@{css/lib/sidebar.css}" rel="stylesheet">
+    <link th:href="@{css/lib/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{css/lib/simdahs.css}" rel="stylesheet">
+    <link th:href="@{css/style.css}" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="sidebar sidebar-hide-to-small sidebar-shrink sidebar-gestures">
+        <div class="nano">
+            <div class="nano-content">
+                <ul>
+					<li class="label">Main</li>
+                    <li><a th:href="@{index}"><i class="ti-home"></i> 主页 </a></li>
+                    <li class="active"><a th:href="@{app-profile}"><i class="ti-user"></i> 个人信息</a></li>
+					<li class="label">工作</li>
+					<li><a class="sidebar-sub-toggle"><i class="ti-heart"></i> 医疗服务 <span class="sidebar-collapse-icon ti-angle-down"></span></a>
+                        <ul>
+                            <li><a th:href="@{new_patient}">新建病人</a></li>
+                            <li><a th:href="@{new_record}">新开病例</a></li>
+                            <li><a th:href="@{new_prescription}">新开处方</a></li>
+                        </ul>
+                    </li>
+					<li><a class="sidebar-sub-toggle"><i class="ti-wheelchair"></i> 病人信息查询 <span class="sidebar-collapse-icon ti-angle-down"></span></a>
+                        <ul>
+                            <li><a th:href="@{search_personalInfo}">个人信息</a></li>
+                            <li><a th:href="@{search_prescription}">处方记录</a></li>
+                            <li><a th:href="@{search_record}">病例记录</a></li>
+                        </ul>
+                    </li>			
+                    <li><a class="sidebar-sub-toggle"><i class="ti-pencil-alt"></i> 医院信息查询 <span class="sidebar-collapse-icon ti-angle-down"></span></a>
+                        <ul>
+                            <li><a th:href="@{search_medicine}">药品情况</a></li>
+                        </ul>
+                    </li>			
+					<li class="label">账户</li>
+					<li><a class="sidebar-sub-toggle"><i class="ti-target"></i> 账户管理 <span class="sidebar-collapse-icon ti-angle-down"></span></a>
+                        <ul>
+                            <li><a th:href="@{page-login}">重新登录</a></li>
+                            <li><a th:href="@{page-register}">注册</a></li>
+                            <li><a th:href="@{page-reset-password}">更改密码</a></li>
+                        </ul>
+                    </li>
+					
+
+                </ul>
+            </div>
+        </div>
+    </div><!-- /# sidebar -->
+
+
+
+
+    <div class="header">
+        <div class="pull-left">
+            <div class="logo" id="sideLogo">
+                <a th:href="@{index}">
+                    <img class="full-logo" th:src="@{images/logo_big.png}" alt="SimDahs">
+                    <img class="small-logo" th:src="@{images/logo-small.png}" alt="SimDahs">
+                </a>
+            </div>
+            <div class="hamburger sidebar-toggle">
+                <span class="ti-menu"></span>
+            </div>
+        </div>
+
+        <div class="pull-right p-r-15">
+            <ul>
+                <li class="header-icon dib"><i class="ti-bell"></i>
+                    <div class="drop-down">
+                        <div class="dropdown-content-heading">
+                            <span class="text-left">Recent Notifications</span>
+                        </div>
+                        <div class="dropdown-content-body">
+                            <ul>
+                                <li>
+                                    <a href="#">
+                                        <img class="pull-left m-r-10 avatar-img" th:src="@{images/avatar/3.jpg}" alt="" />
+                                        <div class="notification-content">
+                                            <small class="notification-timestamp pull-right">02:34 PM</small>
+                                            <div class="notification-heading">王院长</div>
+                                            <div class="notification-text">5 members joined today </div>
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="#">
+                                        <img class="pull-left m-r-10 avatar-img" th:src="@{images/avatar/3.jpg}" alt="" />
+                                        <div class="notification-content">
+                                            <small class="notification-timestamp pull-right">02:34 PM</small>
+                                            <div class="notification-heading">Sofiya</div>
+                                            <div class="notification-text">likes a photo of you</div>
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="#">
+                                        <img class="pull-left m-r-10 avatar-img" th:src="@{images/avatar/3.jpg}" alt="" />
+                                        <div class="notification-content">
+                                            <small class="notification-timestamp pull-right">02:34 PM</small>
+                                            <div class="notification-heading">Richard</div>
+                                            <div class="notification-text">Hi Teddy, Just wanted to let you ...</div>
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="#">
+                                        <img class="pull-left m-r-10 avatar-img" th:src="@{images/avatar/3.jpg}" alt="" />
+                                        <div class="notification-content">
+                                            <small class="notification-timestamp pull-right">02:34 PM</small>
+                                            <div class="notification-heading">Sara Maggi</div>
+                                            <div class="notification-text">Hi Teddy, Just wanted to let you ...</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="text-center">
+                                    <a href="#" class="more-link">See All</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+                <li class="header-icon dib"><i class="ti-email"></i>
+                    <div class="drop-down">
+                        <div class="dropdown-content-heading">
+                            <span class="text-left">2 New Messages</span>
+                            <a th:href="@{email}"><i class="ti-pencil-alt pull-right"></i></a>
+                        </div>
+                        <div class="dropdown-content-body">
+                            <ul>
+                                <li class="notification-unread">
+                                    <a href="#">
+                                        <img class="pull-left m-r-10 avatar-img" th:src="@{images/avatar/1.jpg}" alt="" />
+                                        <div class="notification-content">
+                                            <small class="notification-timestamp pull-right">02:34 PM</small>
+                                            <div class="notification-heading">John Doe</div>
+                                            <div class="notification-text">Hi Teddy, Just wanted to let you ...</div>
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <li class="notification-unread">
+                                    <a href="#">
+                                        <img class="pull-left m-r-10 avatar-img" th:src="@{images/avatar/2.jpg}" alt="" />
+                                        <div class="notification-content">
+                                            <small class="notification-timestamp pull-right">02:34 PM</small>
+                                            <div class="notification-heading">Sara Maggi</div>
+                                            <div class="notification-text">Hi Teddy, Just wanted to let you ...</div>
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="#">
+                                        <img class="pull-left m-r-10 avatar-img" th:src="@{images/avatar/3.jpg}" alt="" />
+                                        <div class="notification-content">
+                                            <small class="notification-timestamp pull-right">02:34 PM</small>
+                                            <div class="notification-heading">John Doe</div>
+                                            <div class="notification-text">Hi Teddy, Just wanted to let you ...</div>
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="#">
+                                        <img class="pull-left m-r-10 avatar-img" th:src="@{images/avatar/2.jpg}" alt="" />
+                                        <div class="notification-content">
+                                            <small class="notification-timestamp pull-right">02:34 PM</small>
+                                            <div class="notification-heading">Sara Maggi</div>
+                                            <div class="notification-text">Hi Teddy, Just wanted to let you ...</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="text-center">
+                                    <a href="#" class="more-link">See All</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+                <li class="header-icon dib"><img class="avatar-img" th:src="@{images/avatar/1.jpg}" alt="" /> <span class="user-avatar">[[${session.username}]] <i class="ti-angle-down f-s-10"></i></span>
+                    <div class="drop-down dropdown-profile">
+                        <div class="dropdown-content-body">
+                            <ul>
+                                <li><a th:href="@{search_personalInfo}"><i class="ti-user"></i> <span>个人信息</span></a></li>
+                                <li><a href="#"><i class="ti-write"></i> <span>代办事项</span></a></li>
+                                <li><a href="#"><i class="ti-bell"></i> <span>我的提醒</span></a></li>
+                                <li><a href="#"><i class="ti-email"></i> <span>我的信息</span></a></li>
+                                <li><a href="#"><i class="ti-settings"></i> <span>系统设置</span></a></li>
+                                <li><a href="#"><i class="ti-help-alt"></i> <span>帮助</span></a></li>
+                                <li><a href="#"><i class="ti-power-off"></i> <span>退出登录</span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+
+
+    <div class="content-wrap">
+        <div class="main">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-8 p-0">
+                        <div class="page-header">
+                            <div class="page-title">
+                                <h1>主页</h1>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 p-0">
+                        <div class="page-header">
+                            <div class="page-title">
+                                <ol class="breadcrumb text-right">
+                                    <li class="active">个人信息</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="main-content">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="card alert">
+                                <div class="card-body">
+									<div class="user-profile">
+										<div class="row">
+											<div class="col-lg-5">
+												<div class="user-photo m-b-30">
+													<img class="img-responsive" th:src="@{images/user_profile.jpg}" alt="" />
+												</div>
+												<div class="user-work">
+													<h4>简介</h4>
+													<div class="work-content">
+														<h3 th:text="${session.doctor.getPosition()}"></h3>
+													</div>
+													<div class="work-content">
+														<p th:text="${session.doctor.getIntroduction()}"></p>
+													</div>
+												</div>
+											</div>
+											<div class="col-lg-7">
+												<div class="user-profile-name" th:text="${session.doctor.getDoctorName()}"></div>
+												<div class="user-Location"><i class="ti-location-pin"></i>[[${session.doctor.getAddress()}]]</div>
+												<div class="user-job-title" th:text="${session.doctor.getHospitalName()}"></div>
+												<div class="ratings">
+                                                    <h4>员工id:<span>[[${session.doctor.getDoctorId()}]]</span></h4>
+													<h4>评分</h4>
+													<div class="rating-star">
+														<span th:text="${session.doctor.getMark()}"></span>
+														<i class="ti-star color-primary"></i>
+														<i class="ti-star color-primary"></i>
+														<i class="ti-star color-primary"></i>
+														<i class="ti-star color-primary"></i>
+														<i class="ti-star"></i>
+													</div>
+												</div>
+												<div class="user-send-message"><button class="btn btn-primary btn-addon" type="button"><i class="ti-plus"></i>关注</button></div>
+												<div class="custom-tab user-profile-tab">
+													<ul class="nav nav-tabs" role="tablist">
+														<li role="presentation" class="active"><a href="#1" aria-controls="1" role="tab" data-toggle="tab">About</a></li>
+													</ul>
+													<div class="tab-content">
+														<div role="tabpanel" class="tab-pane active" id="1">
+                                                            <div class="basic-information">
+																<h4>基本信息</h4>
+																<div class="birthday-content">
+																	<span class="contact-title">出生年月:</span>
+																	<span class="birth-date" th:text="${session.doctor.getBirthday()}"> </span>
+																</div>
+																<div class="gender-content">
+																	<span class="contact-title">性别:</span>
+																	<span class="gender" th:text="${session.doctor.getGender()}"></span>
+																</div>
+                                                                <div class="gender-content">
+																	<span class="contact-title">学历:</span>
+																	<span class="gender" th:text="${session.doctor.getEducation()}"></span>
+																</div>
+															</div>
+															<div class="contact-information">
+																<h4>联系方式</h4>
+																<div class="phone-content">
+																	<span class="contact-title">工作电话:</span>
+																	<span class="phone-number" th:text="${session.doctor.getPhoneNumber()}"></span>
+																</div>
+																<div class="address-content">
+																	<span class="contact-title">办公室:</span>
+																	<span class="mail-address" th:text="${session.doctor.getOffice()}"></span>
+																</div>
+																<div class="email-content">
+																	<span class="contact-title">工作邮箱:</span>
+																	<span class="contact-email" th:text="${session.doctor.getEmail()}"></span>
+																</div>
+																<div class="website-content">
+																	<span class="contact-title">个人网页:</span>
+																	<span class="contact-website" th:text="${session.doctor.getWebPage()}"></span>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+                            </div>
+                        </div><!-- /# column -->
+                        <div class="col-lg-6">
+                            <div class="card alert">
+                                <div class="card-header">
+                                    <h4>课题研究</h4>
+									<div class="card-header-right-icon">
+										<ul>
+											<li class="card-close" data-dismiss="alert"><i class="ti-close"></i></li>
+											<li class="card-option drop-menu"><i class="ti-settings" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" role="link"></i>
+												<ul class="card-option-dropdown dropdown-menu">
+													<li><a href="#"><i class="ti-loop"></i> Update data</a></li>
+													<li><a href="#"><i class="ti-menu-alt"></i> Detail log</a></li>
+													<li><a href="#"><i class="ti-pulse"></i> Statistics</a></li>
+													<li><a href="#"><i class="ti-power-off"></i> Clear ist</a></li>
+												</ul>
+											</li>
+											<li class="doc-link"><a href="#"><i class="ti-search"> 更多</i></a></li>
+										</ul>
+									</div>
+                                </div>
+                                <div class="card-body">
+                                    <table class="table table-responsive table-hover ">
+                                        <thead>
+                                            <tr>
+                                                <th>名称</th>
+                                                <th>状态</th>
+                                                <th>开始日期</th>
+                                                <th>级别</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>去氧胆酸注射液注射治疗颏下脂肪堆积</td>
+                                                <td><span class="badge badge-primary">进行中</span></td>
+                                                <td>2019-1-12</td>
+                                                <td>B+</td>
+                                            </tr>
+                                            <tr>
+                                                <td>超声引导经皮穿刺活检</td>
+                                                <td><span class="badge badge-primary">进行中</span></td>
+                                                <td>2018-9-23</td>
+                                                <td>A+</td>
+                                            </tr>                                            
+                                            <tr>
+                                                <td>多发性骨髓瘤的影像学评估</td>
+                                                <td><span class="badge badge-success">已完成</span></td>
+                                                <td>2018-4-22</td>
+                                                <td>B</td>
+                                            </tr>                                            
+                                            <tr>
+                                                <td>胆道系统肿瘤的药物治疗</td>
+                                                <td><span class="badge badge-success">已完成</span></td>
+                                                <td>2017-8-12</td>
+                                                <td>C</td>
+                                            </tr>
+                                            <tr>
+                                                <td>少量出血患者使用术中回收式自体输血</td>
+                                                <td><span class="badge badge-success">已完成</span></td>
+                                                <td>2017-3-2</td>
+                                                <td>B</td>
+                                            </tr>                                            
+                                            <tr>
+                                                <td>甲状腺相关眼病基因多态性</td>
+                                                <td><span class="badge badge-success">已完成</span></td>
+                                                <td>2016-2-12</td>
+                                                <td>C</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div><!-- /# column -->
+                    </div><!-- /# row -->
+                </div><!-- /# main content -->
+                Copyright &copy; 2019.Company name All rights reserved.
+            </div>
+        </div><!-- /# main -->
+    </div><!-- /# content wrap -->
+
+
+
+
+
+
+    <script th:src="@{js/lib/jquery.min.js}"></script><!-- jquery vendor -->
+    <script th:src="@{js/lib/jquery.nanoscroller.min.js}"></script><!-- nano scroller -->
+    <script th:src="@{js/lib/sidebar.js}"></script><!-- sidebar -->
+    <script th:src="@{js/lib/bootstrap.min.js}"></script><!-- bootstrap -->
+    <script th:src="@{js/lib/mmc-common.js}"></script>
+    <script th:src="@{js/lib/mmc-chat.js}"></script>
+    <script th:src="@{js/scripts.js}"></script><!-- scripit init-->
+
+
+    
+
+
+</body>
+
+</html>

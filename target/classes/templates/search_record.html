@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Table</title>
+	
+	<!-- ================= Favicon ================== -->
+    <!-- Standard -->
+    <link rel="shortcut icon" href="http://placehold.it/64.png/000/fff">
+    <!-- Retina iPad Touch Icon-->
+    <link rel="apple-touch-icon" sizes="144x144" href="http://placehold.it/144.png/000/fff">
+    <!-- Retina iPhone Touch Icon-->
+    <link rel="apple-touch-icon" sizes="114x114" href="http://placehold.it/114.png/000/fff">
+    <!-- Standard iPad Touch Icon--> 
+    <link rel="apple-touch-icon" sizes="72x72" href="http://placehold.it/72.png/000/fff">
+    <!-- Standard iPhone Touch Icon--> 
+    <link rel="apple-touch-icon" sizes="57x57" href="http://placehold.it/57.png/000/fff">
+	
+	<!-- Styles -->
+    <link th:href="@{css/lib/font-awesome.min.css}" rel="stylesheet">
+    <link th:href="@{css/lib/themify-icons.css}" rel="stylesheet">
+    <link th:href="@{css/lib/mmc-chat.css}" rel="stylesheet" />
+    <link th:href="@{css/lib/sidebar.css}" rel="stylesheet">
+    <link th:href="@{css/lib/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{css/lib/simdahs.css}" rel="stylesheet">
+    <link th:href="@{css/style.css}" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="sidebar sidebar-hide-to-small sidebar-shrink sidebar-gestures">
+        <div class="nano">
+            <div class="nano-content">
+                <ul>
+					<li class="label">Main</li>
+                    <li><a th:href="@{index}"><i class="ti-home"></i> 主页 </a></li>
+                    <li><a th:href="@{app-profile}"><i class="ti-user"></i> 个人信息</a></li>
+					<li class="label">工作</li>
+					<li><a class="sidebar-sub-toggle"><i class="ti-heart"></i> 医疗服务 <span class="sidebar-collapse-icon ti-angle-down"></span></a>
+                        <ul>
+                            <li><a th:href="@{new_patient}">新建病人</a></li>
+                            <li><a th:href="@{new_record}">新开病例</a></li>
+                            <li><a th:href="@{new_prescription}">新开处方</a></li>
+                        </ul>
+                    </li>
+					<li  class="active open"><a class="sidebar-sub-toggle"><i class="ti-wheelchair"></i> 病人信息查询 <span class="sidebar-collapse-icon ti-angle-down"></span></a>
+                        <ul>
+                            <li><a th:href="@{search_personalInfo}">个人信息</a></li>
+                            <li><a th:href="@{search_prescription}">处方记录</a></li>
+                            <li class="active"><a th:href="@{search_record}">病例记录</a></li>
+                        </ul>
+                    </li>			
+                    <li><a class="sidebar-sub-toggle"><i class="ti-pencil-alt"></i> 医院信息查询 <span class="sidebar-collapse-icon ti-angle-down"></span></a>
+                        <ul>
+                            <li><a th:href="@{search_medicine}">药品情况</a></li>
+                        </ul>
+                    </li>			
+					<li class="label">账户</li>
+					<li><a class="sidebar-sub-toggle"><i class="ti-target"></i> 账户管理 <span class="sidebar-collapse-icon ti-angle-down"></span></a>
+                        <ul>
+                            <li><a th:href="@{page-login}">重新登录</a></li>
+                            <li><a th:href="@{page-register}">注册</a></li>
+                            <li><a th:href="@{page-reset-password}">更改密码</a></li>
+                        </ul>
+                    </li>
+					
+
+                </ul>
+            </div>
+        </div>
+    </div><!-- /# sidebar -->
+
+
+
+
+    <div class="header">
+        <div class="pull-left">
+            <div class="logo" id="sideLogo">
+                <a th:href="@{index}">
+                    <img class="full-logo" th:src="@{images/logo_big.png}" alt="SimDahs">
+                    <img class="small-logo" th:src="@{images/logo-small.png}" alt="SimDahs">
+                </a>
+            </div>
+            <div class="hamburger sidebar-toggle">
+                <span class="ti-menu"></span>
+            </div>
+        </div>
+
+        <div class="pull-right p-r-15">
+            <ul>
+                <li class="header-icon dib"><i class="ti-bell"></i>
+                    <div class="drop-down">
+                        <div class="dropdown-content-heading">
+                            <span class="text-left">Recent Notifications</span>
+                        </div>
+                        <div class="dropdown-content-body">
+                            <ul>
+                                <li>
+                                    <a href="#">
+                                        <img class="pull-left m-r-10 avatar-img" th:src="@{images/avatar/3.jpg}" alt="" />
+                                        <div class="notification-content">
+                                            <small class="notification-timestamp pull-right">02:34 PM</small>
+                                            <div class="notification-heading">王院长</div>
+                                            <div class="notification-text">5 members joined today </div>
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="#">
+                                        <img class="pull-left m-r-10 avatar-img" th:src="@{images/avatar/3.jpg}" alt="" />
+                                        <div class="notification-content">
+                                            <small class="notification-timestamp pull-right">02:34 PM</small>
+                                            <div class="notification-heading">Sofiya</div>
+                                            <div class="notification-text">likes a photo of you</div>
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="#">
+                                        <img class="pull-left m-r-10 avatar-img" th:src="@{images/avatar/3.jpg}" alt="" />
+                                        <div class="notification-content">
+                                            <small class="notification-timestamp pull-right">02:34 PM</small>
+                                            <div class="notification-heading">Richard</div>
+                                            <div class="notification-text">Hi Teddy, Just wanted to let you ...</div>
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="#">
+                                        <img class="pull-left m-r-10 avatar-img" th:src="@{images/avatar/3.jpg}" alt="" />
+                                        <div class="notification-content">
+                                            <small class="notification-timestamp pull-right">02:34 PM</small>
+                                            <div class="notification-heading">Sara Maggi</div>
+                                            <div class="notification-text">Hi Teddy, Just wanted to let you ...</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="text-center">
+                                    <a href="#" class="more-link">See All</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+                <li class="header-icon dib"><i class="ti-email"></i>
+                    <div class="drop-down">
+                        <div class="dropdown-content-heading">
+                            <span class="text-left">2 New Messages</span>
+                            <a th:href="@{email}"><i class="ti-pencil-alt pull-right"></i></a>
+                        </div>
+                        <div class="dropdown-content-body">
+                            <ul>
+                                <li class="notification-unread">
+                                    <a href="#">
+                                        <img class="pull-left m-r-10 avatar-img" th:src="@{images/avatar/1.jpg}" alt="" />
+                                        <div class="notification-content">
+                                            <small class="notification-timestamp pull-right">02:34 PM</small>
+                                            <div class="notification-heading">John Doe</div>
+                                            <div class="notification-text">Hi Teddy, Just wanted to let you ...</div>
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <li class="notification-unread">
+                                    <a href="#">
+                                        <img class="pull-left m-r-10 avatar-img" th:src="@{images/avatar/2.jpg}" alt="" />
+                                        <div class="notification-content">
+                                            <small class="notification-timestamp pull-right">02:34 PM</small>
+                                            <div class="notification-heading">Sara Maggi</div>
+                                            <div class="notification-text">Hi Teddy, Just wanted to let you ...</div>
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="#">
+                                        <img class="pull-left m-r-10 avatar-img" th:src="@{images/avatar/3.jpg}" alt="" />
+                                        <div class="notification-content">
+                                            <small class="notification-timestamp pull-right">02:34 PM</small>
+                                            <div class="notification-heading">John Doe</div>
+                                            <div class="notification-text">Hi Teddy, Just wanted to let you ...</div>
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="#">
+                                        <img class="pull-left m-r-10 avatar-img" th:src="@{images/avatar/2.jpg}" alt="" />
+                                        <div class="notification-content">
+                                            <small class="notification-timestamp pull-right">02:34 PM</small>
+                                            <div class="notification-heading">Sara Maggi</div>
+                                            <div class="notification-text">Hi Teddy, Just wanted to let you ...</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="text-center">
+                                    <a href="#" class="more-link">See All</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+                <li class="header-icon dib"><img class="avatar-img" th:src="@{images/avatar/1.jpg}" alt="" /> <span class="user-avatar">[[${session.username}]] <i class="ti-angle-down f-s-10"></i></span>
+                    <div class="drop-down dropdown-profile">
+                        <div class="dropdown-content-body">
+                            <ul>
+                                <li><a href="#"><i class="ti-user"></i> <span>个人信息</span></a></li>
+                                <li><a href="#"><i class="ti-write"></i> <span>代办事项</span></a></li>
+                                <li><a href="#"><i class="ti-bell"></i> <span>我的提醒</span></a></li>
+                                <li><a href="#"><i class="ti-email"></i> <span>我的信息</span></a></li>
+                                <li><a href="#"><i class="ti-settings"></i> <span>系统设置</span></a></li>
+                                <li><a href="#"><i class="ti-help-alt"></i> <span>帮助</span></a></li>
+                                <li><a href="#"><i class="ti-power-off"></i> <span>退出登录</span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+
+
+    <div class="content-wrap">
+        <div class="main">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-8 p-0">
+                        <div class="page-header">
+                            <div class="page-title">
+                                <h1>病人病例记录查询</h1>
+                            </div>
+                        </div>
+                    </div><!-- /# column -->
+                    <div class="col-lg-4 p-0">
+                        <div class="page-header">
+                            <div class="page-title">
+                                <ol class="breadcrumb text-right">
+                                    <li><a href="#">病人信息查询</a></li>
+                                    <li><a href="#">病例记录</a></li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div><!-- /# column -->
+                </div><!-- /# row -->
+                <div class="main-content">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="card alert">
+                                <form th:action="@{/selectRecord}">
+                                    <div class="form_block">
+                                        <h3>搜索项</h3>
+                                        <div class="col-lg-4">
+                                            <div class="form-group">
+                                                <label> 医生ID </label>
+                                                <input type="text" size="8" class="form-control">
+                                            </div>
+                                            <div class="form-group">
+                                                <label> 病人ID </label>
+                                                <input type="text" size="8" class="form-control">
+                                            </div>
+                                            <div class="form-group">
+                                                <label> 病人姓名 </label>
+                                                <input type="text" size="8" class="form-control">
+                                            </div>
+                                            <div class="form-group">
+                                                <label> 性别 </label>
+                                                <input type="radio" name="sex" checked="checked">男
+                                                <input type="radio" name="sex">女
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <div class="form-group">
+                                                <label>疾病分类</label>
+                                                <input type="text" size="6" class="form-control">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>发病日期</label>
+                                                <input type="text" size="12" class="form-control">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>是否传染病</label>
+                                                    <input type="radio" name="sex" >是
+                                                    <input type="radio" name="sex" checked="checked">否
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    <div class="form_submit">
+                                        <input type="submit" value="查询" class="btn btn-default"> 
+                                        <input type="reset" value="重置" class="btn btn-default">
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="card alert">
+                                <div class="form_block">
+                                    <h3>身体信息</h3>
+                                    <div class="col-lg-3">
+                                        <ul class="record_ul">
+                                            <li>体温: 35.6 ℃</li>
+                                            <li>呼吸: 13 次/分</li>
+                                            <li>脉搏: 80 次/分</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <ul class="record_ul">
+                                            <li>血压: 69/129 mmHg</li>
+                                            <li>血糖: 33 mmol/L</li>
+                                            <li>血脂: 12 mmol/L</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <ul class="record_ul">
+                                            <li>身高: 188 cm</li>
+                                            <li>体重: 78 kg</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="form_block">
+                                    <h3>病例信息</h3>
+                                    <div class="col-lg-12">
+                                        <ul class="record_ul">
+                                            <li>疾病分类: 肠胃科</li>
+                                            <li>症状: 胃炎</li>
+                                            <li>发病日期: 2019-4-12</li>
+                                            <li>是否传染病: 否</li>
+                                            <li>主诉: 胸闷、气急 10 天</li>
+                                            <li>现病史: 患者 10 天前上感后出现出现胸闷、心悸不适,活动后症状 加重。病程中无发热、胸痛,无咳嗽咳痰</li>
+                                            <li>既往史: 无</li>
+                                            <li>个人史: 无</li>
+                                            <li>家庭史: 无</li>
+                                            <li>诊断信息: 常继发于上呼吸道感染，支气管炎</li>
+                                            <li>医嘱： 1.本病药物治疗宜选用抗菌药控制感染，可使用头孢类抗生素,同时可加用缓解支气管痉挛的氨茶碱,要多饮水,多吃瓜果蔬菜。 2.注意保持家庭环境卫生，空气流通，禁烟，加强体育锻炼，防止感冒，注意保暖。</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!-- /# column -->
+					</div><!-- /# row -->    
+                </div><!-- /# main content -->
+            Copyright &copy; 2019.Company name All rights reserved.
+            </div><!-- /# container-fluid -->
+        </div><!-- /# main -->
+    </div><!-- /# content wrap -->
+
+
+
+
+
+
+
+    <script th:src="@{js/lib/jquery.min.js}"></script><!-- jquery vendor -->
+    <script th:src="@{js/lib/jquery.nanoscroller.min.js}"></script><!-- nano scroller -->
+    <script th:src="@{js/lib/sidebar.js}"></script><!-- sidebar -->
+    <script th:src="@{js/lib/bootstrap.min.js}"></script><!-- bootstrap -->
+    <script th:src="@{js/lib/mmc-common.js}"></script>
+    <script th:src="@{js/lib/mmc-chat.js}"></script>
+    <script th:src="@{js/scripts.js}"></script><!-- scripit init-->
+
+
+    
+
+
+</body>
+
+</html>

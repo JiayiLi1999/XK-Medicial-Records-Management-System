@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sufer.mapper.MedicineMapper">
+    <resultMap id="MedicineMapping" type="Medicine">
+        <id column="medicine_id" property="medicineId"></id>
+        <result column="medicine_name" property="medicineName"></result>
+        <result column="medicine_type" property="medicineType"></result>
+        <result column="medicine_form" property="medicineForm"></result>
+        <result column="usage" property="usage"></result>
+        <result column="inventory" property="inventory"></result>
+        <result column="price" property="price"></result>
+        <result column="comment" property="comment"></result>
+    </resultMap>
+
+    <parameterMap id="MedicineParaMapping" type="Medicine">
+        <parameter resultMap="medicine_name" property="medicineName"></parameter>
+        <parameter resultMap="medicine_type" property="medicineType"></parameter>
+        <parameter resultMap="medicine_form" property="medicineForm"></parameter>
+        <parameter resultMap="usage" property="usage"></parameter>
+        <parameter resultMap="inventory" property="inventory"></parameter>
+        <parameter resultMap="price" property="price"></parameter>
+        <parameter resultMap="comment" property="comment"></parameter>
+    </parameterMap>
+
+    <select id="selectMedicineByMedicineName" resultType="Medicine" resultMap="MedicineMapping">
+        select * from medicine
+        where medicine_name = (#{medicineName})
+    </select>
+</mapper>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Widget</title>
+	
+	<!-- ================= Favicon ================== -->
+    <!-- Standard -->
+    <link rel="shortcut icon" href="http://placehold.it/64.png/000/fff">
+    <!-- Retina iPad Touch Icon-->
+    <link rel="apple-touch-icon" sizes="144x144" href="http://placehold.it/144.png/000/fff">
+    <!-- Retina iPhone Touch Icon-->
+    <link rel="apple-touch-icon" sizes="114x114" href="http://placehold.it/114.png/000/fff">
+    <!-- Standard iPad Touch Icon--> 
+    <link rel="apple-touch-icon" sizes="72x72" href="http://placehold.it/72.png/000/fff">
+    <!-- Standard iPhone Touch Icon--> 
+    <link rel="apple-touch-icon" sizes="57x57" href="http://placehold.it/57.png/000/fff">
+	
+	<!-- Styles -->
+	<link th:href="@{css/lib/font-awesome.min.css}" rel="stylesheet">
+	<link th:href="@{css/lib/themify-icons.css}" rel="stylesheet">
+	<link th:href="@{css/lib/bootstrap.min.css}" rel="stylesheet">
+	<link th:href="@{css/lib/simdahs.css}" rel="stylesheet">
+	<link th:href="@{css/style.css}" rel="stylesheet">
+</head>
+
+<body class="bg-primary">
+
+	<div class="unix-login">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6 col-lg-offset-3">
+					<div class="login-content">
+						<div class="login-logo">
+							<a th:href="@{index}"><span>小康——电子病历管理系统</span></a>
+						</div>
+						<div class="login-form">
+							<p style="color: red" th:text="${session.registersuccessed}" th:if="${not #strings.isEmpty(session.registersuccessed)}"></p>
+							<h4>个人信息登录</h4>
+							<form th:action="@{/newInfo}">
+								<div>
+									<div class="col-lg-6">
+										<div class="form-group">
+											<label>姓名</label>
+											<input name="doctor_name" type="text" class="form-control" >
+										</div>
+									</div>
+									<div class="col-lg-6">
+										<div class="form-group">
+											<label>性别</label>
+											<input name="gender" type="text" class="form-control" >
+										</div>
+									</div>
+									<div class="col-lg-4">
+										<div class="form-group">
+											<label>出生年月</label>
+											<input name="birthday" type="text" class="form-control" >
+										</div>
+									</div>
+									<div class="col-lg-4">
+										<div class="form-group">
+											<label>学历</label>
+											<input name="education" type="text" class="form-control" >
+										</div>
+									</div>
+									<div class="col-lg-4">
+										<div class="form-group">
+											<label>评分</label>
+											<input name="mark" type="text" class="form-control" >
+										</div>
+									</div>
+									<div class="col-lg-6">
+										<div class="form-group">
+											<label>居所</label>
+											<input name="address" type="text" class="form-control" >
+										</div>
+									</div>
+									<div class="col-lg-6">
+										<div class="form-group">
+											<label>工作单位</label>
+											<input name="hospital_name" type="text" class="form-control" >
+										</div>
+									</div>
+									<div class="col-lg-6">
+										<div class="form-group">
+											<label>工作电话</label>
+											<input name="phone_number" type="text" class="form-control" >
+										</div>
+									</div>
+									<div class="col-lg-6">
+										<div class="form-group">
+											<label>工作邮箱</label>
+											<input name="email" type="text" class="form-control" >
+										</div>
+									</div>
+									<div class="form-group">
+										<label>职位</label>
+										<input name="position" type="text" class="form-control" >
+									</div>
+									<div class="form-group">
+										<label>办公室</label>
+										<input name="office" type="text" class="form-control" >
+									</div>
+									<div class="form-group">
+										<label>个人网页</label>
+										<input name="web_page" type="text" class="form-control" >
+									</div>
+									<div class="form-group">
+										<label>简介</label>
+										<textarea name="introduction" rows="3" cols="130" class="form-control"></textarea>
+									</div>
+								</div>
+								<div class="form_submit">
+									<input type="submit" value="提交" class="btn btn-primary btn-flat m-b-30 m-t-30">
+									<input type="reset" value="重置" class="btn btn-primary bg-twitter btn-flat btn-addon m-t-10">
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+
+</html>

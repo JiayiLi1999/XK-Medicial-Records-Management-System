@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sufer.mapper.RecordMapper">
+    <resultMap id="RecordMapping" type="Record">
+        <id column="record_id" property="recordId"></id>
+        <result column="patient_id" property="patientId"></result>
+        <result column="doctor_id" property="doctorId"></result>
+        <result column="body_temperature" property="bodyTemperature"></result>
+        <result column="breath" property="breath"></result>
+        <result column="pulse" property="pulse"></result>
+        <result column="blood_pressure_high" property="bloodPressureHigh"></result>
+        <result column="blood_pressure_low" property="bloodPressureLow"></result>
+        <result column="blood_glucose" property="bloodGlucose"></result>
+        <result column="blood_fat" property="bloodFat"></result>
+        <result column="diseases_classification" property="diseasesClassification"></result>
+        <result column="symptom" property="symptom"></result>
+        <result column="onset" property="onset"></result>
+        <result column="is_infectious" property="isInfectious"></result>
+        <result column="chief_complaint" property="chiefComplaint"></result>
+        <result column="present_illness" property="presentIllness"></result>
+        <result column="past_illness" property="pastIllness"></result>
+        <result column="personal_illness" property="personalIllness"></result>
+        <result column="family_illness" property="familyIllness"></result>
+        <result column="diagnose" property="diagnose"></result>
+        <result column="doctor_advice" property="doctorAdvice"></result>
+    </resultMap>
+
+    <parameterMap id="RecordParaMapping" type="Record">
+        <parameter resultMap="patient_id" property="patientId"></parameter>
+        <parameter resultMap="doctor_id" property="doctorId"></parameter>
+        <parameter resultMap="body_temperature" property="bodyTemperature"></parameter>
+        <parameter resultMap="breath" property="breath"></parameter>
+        <parameter resultMap="pulse" property="pulse"></parameter>
+        <parameter resultMap="blood_pressure_high" property="bloodPressureHigh"></parameter>
+        <parameter resultMap="blood_pressure_low" property="bloodPressureLow"></parameter>
+        <parameter resultMap="blood_glucose" property="bloodGlucose"></parameter>
+        <parameter resultMap="blood_fat" property="bloodFat"></parameter>
+        <parameter resultMap="diseases_classification" property="diseasesClassification"></parameter>
+        <parameter resultMap="symptom" property="symptom"></parameter>
+        <parameter resultMap="onset" property="onset"></parameter>
+        <parameter resultMap="is_infectious" property="isInfectious"></parameter>
+        <parameter resultMap="chief_complaint" property="chiefComplaint"></parameter>
+        <parameter resultMap="present_illness" property="presentIllness"></parameter>
+        <parameter resultMap="past_illness" property="pastIllness"></parameter>
+        <parameter resultMap="personal_illness" property="personalIllness"></parameter>
+        <parameter resultMap="family_illness" property="familyIllness"></parameter>
+        <parameter resultMap="diagnose" property="diagnose"></parameter>
+        <parameter resultMap="doctor_advice" property="doctorAdvice"></parameter>
+    </parameterMap>
+
+    <insert id="addRecord" keyProperty="recordId" useGeneratedKeys="true" parameterType="Record" parameterMap="RecordParaMapping">
+        insert into record(patient_id, doctor_id, body_temperature, breath, pulse, blood_pressure_high, blood_pressure_low, blood_glucose,blood_fat, diseases_classification , symptom, onset, is_infectious, chief_complaint, present_illness, past_illness, personal_illness, family_illness, diagnose, doctor_advice)
+        values (#{patientId} , #{doctorId}, #{bodyTemperature}, #{breath}, #{pulse}, #{bloodPressureHigh}, #{bloodPressureLow}, #{bloodGlucose},#{bloodFat}, #{diseasesClassification}, #{symptom}, #{onset}, #{isInfectious}, #{chiefComplaint}, #{presentIllness}, #{pastIllness}, #{personalIllness}, #{familyIllness}, #{diagnose}, #{doctorAdvice})
+    </insert>
+</mapper>
